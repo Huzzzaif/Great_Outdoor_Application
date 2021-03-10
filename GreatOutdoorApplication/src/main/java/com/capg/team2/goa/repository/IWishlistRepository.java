@@ -15,11 +15,11 @@ public interface IWishlistRepository{
 
 	WishlistitemEntity findWishlistItem(String productId, String userId);
 	void addProductToWishlist(String prodId,int wishlistID);
-	void deleteWishlistItem(String productId, String userId) throws WishlistException;
+	void deleteWishlistItem(String productId, String userId);
 
-	void deleteWishlist(String userId) throws WishlistException;
+	void deleteWishlist(String userId) ;
 
-	void addWishlistItem(WishlistitemEntity wishlistItem) throws WishlistException;
+	void addWishlistItem(WishlistitemEntity wishlistItem) ;
 
 	void addProductToWishlist(String prodId, List<String> wishlistID);
 
