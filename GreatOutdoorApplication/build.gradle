@@ -8,6 +8,7 @@ group = 'capg.team2'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -26,6 +27,12 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.27.Final'
+	//implementation group: 'org.hibernate.validator', name: 'hibernate-validator'	
+	// https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.28.Final'
+	
+	
 }
 
 test {

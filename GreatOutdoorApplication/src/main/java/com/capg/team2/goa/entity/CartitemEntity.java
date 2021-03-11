@@ -2,36 +2,44 @@ package com.capg.team2.goa.entity;
 
 import java.util.Map;
 
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 
 @Entity
-@Table(name = "cart")
+
 public class CartitemEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartid;
-	@OneToOne
-	@JoinColumn(name = "userid")
 	private String userid;
-	@ManyToOne
+	@ElementCollection
+	@MapKeyColumn(name = "item_name")
+    @Column(name = "price")
 	private Map<ProductEntity, Integer> products;
+	@Column
 	private double cartTotalPrice;
+	@Column
 	private int totalQuantity;
 	
 	
 	
 	
+	public CartitemEntity() {
+		super();
+	}
 	public CartitemEntity(int cartid, String userid, Map<ProductEntity, Integer> products, double cartTotalPrice,
 			int totalQuantity) {
 		super();

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import com.capg.team2.goa.entity.ProductEntity;
 
 @Entity
-@Table(name = "wishlist")
+
 public class WishlistitemEntity 
 {
 	
@@ -19,20 +19,21 @@ public class WishlistitemEntity
 	@Column(name = "userId")
 	private  String userId;
 	
-	@Column(name = "productIds")
+	
+	@ElementCollection
+    @Column(name = "ProductId")
     private  List<String> productIds;
-
-
-    
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productIds", referencedColumnName = "wishlistId", insertable = false, updatable = false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="Product")
     private ProductEntity product;
 
     
 
+    public WishlistitemEntity() {
+		super();
+	}
 
-    public WishlistitemEntity(String userId, List<String> wishlistId)
+	public WishlistitemEntity(String userId, List<String> wishlistId)
     {
         this.userId = userId;
         this.productIds=wishlistId;
