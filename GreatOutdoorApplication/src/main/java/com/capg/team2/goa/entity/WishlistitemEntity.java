@@ -1,11 +1,18 @@
 package com.capg.team2.goa.entity;
-import java.util.*;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
-import javax.persistence.*;
-
-
-import com.capg.team2.goa.entity.ProductEntity;
 
 @Entity
 public class WishlistitemEntity 
@@ -14,10 +21,11 @@ public class WishlistitemEntity
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int wishlistId;
-	@Column(name = "userId")
+	@Column(nullable = false)
 	private  String userId;
-	@ElementCollection
-    private  List<String> productIds;
+	@OneToMany(targetEntity = ProductEntity.class,cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
+    private  List<ProductEntity> productIds;
     
     
     public WishlistitemEntity() {
@@ -26,7 +34,7 @@ public class WishlistitemEntity
 
 	
 
-    public WishlistitemEntity(int wishlistId, String userId, List<String> productIds) {
+    public WishlistitemEntity(int wishlistId, String userId, List<ProductEntity> productIds) {
 		super();
 		this.wishlistId = wishlistId;
 		this.userId = userId;
@@ -39,7 +47,7 @@ public class WishlistitemEntity
         return wishlistId;
     }
 
-    public List<String> getProductIds() {
+    public List<ProductEntity> getProductIds() {
         return productIds;
     }
 
@@ -51,7 +59,7 @@ public class WishlistitemEntity
         this.wishlistId = wishlistId;
     }
 
-    public void setProductId( List<String> productIds) {
+    public void setProductId( List<ProductEntity> productIds) {
         this.productIds = productIds;
     }
 
