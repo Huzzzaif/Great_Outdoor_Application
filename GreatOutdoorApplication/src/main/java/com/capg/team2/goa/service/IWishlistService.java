@@ -2,28 +2,23 @@ package com.capg.team2.goa.service;
 
 import java.util.List;
 
-
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Component;
 import com.capg.team2.goa.entity.WishlistitemEntity;
-import com.capg.team2.goa.exception.WishlistException;
+import com.capg.team2.goa.exception.WishlistNotExistsException;
 
 
-@Service
+@Component
 public interface IWishlistService {
-	List<WishlistitemEntity> findAllItems();
+	public List<WishlistitemEntity> findAllItems();
 
-	WishlistitemEntity findWishlist(String userId);
+	public WishlistitemEntity findWishlist(String userId);
 
-	WishlistitemEntity findWishlistItem(String productId, String userId);
-	void addProductToWishlist(String prodId,int wishlistID);
-	void deleteWishlistItem(String productId, String userId) throws WishlistException;
+	public WishlistitemEntity findWishlistItem(String productId, String userId);
+	
+	public void deleteWishlistItem(String productId, String userId) throws WishlistNotExistsException;
 
-	void deleteWishlist(String userId) throws WishlistException;
+	public void deleteWishlist(String userId) throws WishlistNotExistsException;
 
-	void addWishlistItem(WishlistitemEntity wishlistItem) throws WishlistException;
-
-	void addProductToWishlist(String prodId, List<String> wishlistID);
+	public void addProductToWishlist(String prodId, List<String> wishlistID);
 
 }
