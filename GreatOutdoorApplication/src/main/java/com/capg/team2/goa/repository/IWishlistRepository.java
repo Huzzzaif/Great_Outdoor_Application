@@ -2,9 +2,11 @@ package com.capg.team2.goa.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.capg.team2.goa.entity.WishlistitemEntity;
+import com.capg.team2.goa.exception.WishlistException;
 
 
 @Repository

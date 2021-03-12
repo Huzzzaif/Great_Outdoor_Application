@@ -1,30 +1,33 @@
 package com.capg.team2.goa.service;
 
-
-
-
 import java.util.List;
 
+
+
+import org.springframework.stereotype.Service;
+
 import com.capg.team2.goa.entity.ProductEntity;
+import com.capg.team2.goa.exception.ProductException;
 
-public interface IProductService
-{
-	public List<ProductEntity> findAllProducts();
+@Service
+public interface IProductService{
+	
+	List<ProductEntity> findAllProducts();
 
-	public ProductEntity findByProductId(String id);
+	ProductEntity findByProductId(String id);
 
- 	public List<ProductEntity> findByProductCategory(String productCategory);
+	List<ProductEntity> findByProductCategory(String productCategory);
 
-	public ProductEntity addProduct(ProductEntity productEntity) throws ProductException;
+	ProductEntity addProduct(ProductEntity productEntity) throws ProductException;
 
-	public ProductEntity updateProduct(ProductEntity productEntity) throws ProductException;
+	ProductEntity updateProduct(ProductEntity productEntity) throws ProductException;
 
-	public void updateProductQuantity(Integer quantity,String productId);
+	void updateProductQuantity(Integer quantity,String productId);
 
-	public void deleteByProductId(String id) throws ProductException;
+	void deleteByProductId(String id) throws ProductException;
 
-	public List<ProductEntity> search(String keyword);
+	List<ProductEntity> search(String keyword);
 
-	public List<ProductEntity> filter(double maxPrice);
+	List<ProductEntity> filter(double maxPrice);
 
 }

@@ -18,23 +18,23 @@ import javax.persistence.Table;
 
 
 @Entity
-
+@Table(name="cart")
 public class CartitemEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cartId;
+	
+	
 	private String userId;
+	
 	@ElementCollection
-	@MapKeyColumn(name = "item_name")
-    @Column(name = "price")
-	private Map<ProductEntity, Integer> products;
+	@Column
+	private Map<ProductEntity , Integer> products;
 	@Column
 	private double cartTotalPrice;
 	@Column
 	private int totalQuantity;
-	
-	
 	
 	
 	public CartitemEntity() {

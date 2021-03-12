@@ -8,38 +8,34 @@ import javax.persistence.*;
 import com.capg.team2.goa.entity.ProductEntity;
 
 @Entity
-
 public class WishlistitemEntity 
 {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int wishlistId;
-	
 	@Column(name = "userId")
 	private  String userId;
-	
-	
 	@ElementCollection
-    @Column(name = "ProductId")
     private  List<String> productIds;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="Product")
-    private ProductEntity product;
-
     
-
+    
     public WishlistitemEntity() {
 		super();
 	}
 
-	public WishlistitemEntity(String userId, List<String> wishlistId)
-    {
-        this.userId = userId;
-        this.productIds=wishlistId;
-    }
+	
 
-    public int getId() {
+    public WishlistitemEntity(int wishlistId, String userId, List<String> productIds) {
+		super();
+		this.wishlistId = wishlistId;
+		this.userId = userId;
+		this.productIds = productIds;
+	}
+
+
+
+	public int getId() {
         return wishlistId;
     }
 
@@ -51,7 +47,7 @@ public class WishlistitemEntity
         return userId;
     }
 
-    public void setId(int id) {
+    public void setId(int wishlistId) {
         this.wishlistId = wishlistId;
     }
 
@@ -64,11 +60,4 @@ public class WishlistitemEntity
     }
 
 
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
-
-    public ProductEntity getProduct() {
-        return product;
-    }
 }

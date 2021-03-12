@@ -1,14 +1,13 @@
-package com.capg.team2.goa.service;
+package com.capg.team2.goa.repository;
 import java.util.List;
 
-
-import org.springframework.stereotype.Service;
-
+import org.springframework.data.jpa.repository.JpaRepository; 
+import org.springframework.stereotype.Repository;
 import com.capg.team2.goa.entity.GrowthReportEntity;
 import com.capg.team2.goa.exception.GrowthReportException;
 
-@Service
-public interface IGrowthReportService {
+@Repository
+public interface IGrowthReportRepository {
 	
 	
 	List<GrowthReportEntity> findAllGrowthReport() throws GrowthReportException;

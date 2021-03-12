@@ -1,5 +1,5 @@
 package com.capg.team2.goa.service;
 
-public class ICustomerService {
+public interface ICustomerService {
 
 }

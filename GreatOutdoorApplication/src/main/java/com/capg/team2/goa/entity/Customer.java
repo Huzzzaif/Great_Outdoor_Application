@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -29,8 +30,7 @@ public class Customer {
 	@Column
 	private String email;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="Address")
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
 	public int getCustomerId() {

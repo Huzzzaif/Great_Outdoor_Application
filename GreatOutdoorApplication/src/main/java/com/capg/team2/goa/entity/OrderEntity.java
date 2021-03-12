@@ -20,8 +20,6 @@ public class OrderEntity {
 	private String orderid;
 	private String userid;
 	@ElementCollection
-	@MapKeyColumn(name = "item_name")
-    @Column(name = "price")
 	private Map<ProductEntity, Integer> products;
 	private double totalPrice;
 	private long totalQuantity;
